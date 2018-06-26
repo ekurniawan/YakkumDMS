@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DokumenWebApps.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,7 @@ namespace DokumenWebApps.Data
             : base(options)
         {
         }
+
+        public DbSet<Classification> Classifications { get; set; }
     }
 }
