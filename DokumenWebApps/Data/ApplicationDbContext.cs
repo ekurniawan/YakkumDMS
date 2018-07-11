@@ -14,6 +14,6 @@ namespace DokumenWebApps.Data
         {
         }
 
-        public DbSet<Classification> Classifications { get; set; }
+        public DbSet<Klasifikasi> Klasifikasi { get; set; }
     }
 }
