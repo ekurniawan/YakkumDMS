@@ -77,24 +77,26 @@ namespace DokumenWebApps.Controllers
         }
 
         // GET: Klasifikasi/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            var model = _tblKlasifikasi.GetById(id);
+            return View(model);
         }
 
         // POST: Klasifikasi/Delete/5
         [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeletePost(string id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                _tblKlasifikasi.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
+                ViewBag.Error = "Error : " + ex.Message;
                 return View();
             }
         }
