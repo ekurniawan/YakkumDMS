@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace DokumenWebApps.DAL
 {
+    //crud
     public interface ICrud<T>
     {
         IEnumerable<T> GetAll();
