@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DokumenWebApps.DAL;
+using DokumenWebApps.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,16 +39,16 @@ namespace DokumenWebApps.Controllers
         // POST: Klasifikasi/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Klasifikasi klasifikasi)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _tblKlasifikasi.Create(klasifikasi);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
+                ViewBag.Error = "Error:" + ex.Message;
                 return View();
             }
         }
