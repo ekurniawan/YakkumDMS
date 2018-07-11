@@ -17,6 +17,5 @@ namespace DokumenWebApps.Models
         public int Level { get; set; }
 
         public string NamaKlasifikasi { get; set; }
-        
     }
 }

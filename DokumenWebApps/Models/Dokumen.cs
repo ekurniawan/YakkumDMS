@@ -15,7 +15,7 @@ namespace DokumenWebApps.Models
         public DateTime TanggalDibuat { get; set; }
         public DateTime TanggalDiterima { get; set; }
         public string Sumber { get; set; }
-
         public string Keterangan { get; set; }
+        public Klasifikasi Klasifikasi { get; set; }
     }
 }
