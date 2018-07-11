@@ -13,7 +13,7 @@ namespace DokumenWebApps.Data
             : base(options)
         {
         }
-
         public DbSet<Klasifikasi> Klasifikasi { get; set; }
+        public DbSet<Dokumen> Dokumen { get; set; }
     }
 }
