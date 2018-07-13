@@ -11,17 +11,33 @@ namespace DokumenWebApps.Models
         public Klasifikasi()
         {
             StatusAktif = true;
+            RetensiAktif = 0;
+            RetensiInaktif = 0;
         }
 
         [Key, MaxLength(20)]
+        [Display(Name ="Kode Klasifikasi")]
+        [Required(ErrorMessage ="Data Kode Klasifikasi Harus Diisi")]
         public string KodeKlasifikasi { get; set; }
+
         [MaxLength(20)]
         public string Induk { get; set; }
+
         public int Level { get; set; }
+
+        [Display(Name ="Nama Klasifikasi")]
+        [Required(ErrorMessage ="Nama Klasifikasi Harus Diisi")]
         public string NamaKlasifikasi { get; set; }
+
         public string Uraian { get; set; }
+
+        [Display(Name ="Retensi Aktif")]
         public int RetensiAktif { get; set; }
+
+        [Display(Name ="Retensi Inaktif")]
         public int RetensiInaktif { get; set; }
+
+        [Display(Name ="Status Aktif")]
         public bool StatusAktif { get; set; }
     }
 }
