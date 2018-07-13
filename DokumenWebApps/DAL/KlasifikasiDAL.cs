@@ -44,7 +44,7 @@ namespace DokumenWebApps.DAL
 
         public IEnumerable<Klasifikasi> GetAll()
         {
-            var results = _db.Klasifikasi.OrderBy(k => k.NamaKlasifikasi);
+            var results = _db.Klasifikasi.OrderBy(k => k.KodeKlasifikasi);
             //var results = from k in _db.Klasifikasi
             //              orderby k.NamaKlasifikasi ascending
             //              select k;
