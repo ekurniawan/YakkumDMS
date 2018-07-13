@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DokumenWebApps.Data;
 using DokumenWebApps.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DokumenWebApps.DAL
 {
@@ -51,6 +52,17 @@ namespace DokumenWebApps.DAL
             return results;
         }
 
+        public IEnumerable<Klasifikasi> GetAllAktifStatus()
+        {
+            var results = from k in _db.Klasifikasi
+                          where k.StatusAktif == true
+                          orderby k.KodeKlasifikasi ascending
+                          select k;
+
+            //var results = _db.Klasifikasi.FromSql("select * from Klasifikasi where StatusAktif=1 order by KodeKlasifikasi");
+            return results;
+        }
+
         public IEnumerable<Klasifikasi> GetAllByNama(string nama)
         {
             //var results = from k in _db.Klasifikasi
@@ -75,6 +87,20 @@ namespace DokumenWebApps.DAL
                 return results;
             else
                 throw new Exception("Data tidak ditemukan !");
+        }
+
+        public void UbahStatusAktif(string id)
+        {
+            var result = GetById(id);
+            if (result != null)
+            {
+                result.StatusAktif = false;
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Error: Data klasifikasi tidak ditemukan !");
+            }
         }
 
         public void Update(string id, Klasifikasi obj)

@@ -20,7 +20,7 @@ namespace DokumenWebApps.Controllers
         // GET: Klasifikasi
         public ActionResult Index()
         {
-            var models = _tblKlasifikasi.GetAll();
+            var models = _tblKlasifikasi.GetAllAktifStatus();
             return View(models);
         }
 
@@ -91,7 +91,7 @@ namespace DokumenWebApps.Controllers
         {
             try
             {
-                _tblKlasifikasi.Delete(id);
+                _tblKlasifikasi.UbahStatusAktif(id);
                 return RedirectToAction(nameof(Index));
             }
             catch(Exception ex)

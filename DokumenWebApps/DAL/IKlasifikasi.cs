@@ -10,5 +10,7 @@ namespace DokumenWebApps.DAL
     public interface IKlasifikasi : ICrud<Klasifikasi>
     {
         IEnumerable<Klasifikasi> GetAllByNama(string nama);
+        IEnumerable<Klasifikasi> GetAllAktifStatus();
+        void UbahStatusAktif(string id);
     }
 }
