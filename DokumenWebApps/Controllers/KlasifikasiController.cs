@@ -48,7 +48,8 @@ namespace DokumenWebApps.Controllers
             }
             catch(Exception ex)
             {
-                ViewBag.Error = "Error:" + ex.Message;
+                ViewBag.Error = 
+                    $"<span class='alert alert-danger'>Kesalahan {ex.Message}</span>";
                 return View();
             }
         }

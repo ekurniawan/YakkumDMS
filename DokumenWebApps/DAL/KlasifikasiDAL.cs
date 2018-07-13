@@ -23,9 +23,21 @@ namespace DokumenWebApps.DAL
                 _db.Add(obj);
                 _db.SaveChanges();
             }
-            catch (Exception ex)
+            catch (DbUpdateException dbEx)
             {
-                throw new Exception(ex.Message);
+                var sqlError = (System.Data.SqlClient.SqlException)dbEx.InnerException;
+                if (sqlError.Number == 2627)
+                {
+                    throw new Exception("Kode Klasifikasi sudah ada, masukan kode yang lain.");
+                }
+                else
+                {
+                    throw new Exception("Error: " + sqlError.Message);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
             }
         }
 
